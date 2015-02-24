@@ -11,8 +11,8 @@ ADD hadoop-nfs-connector-1.0.4.jar /usr/lib/hadoop/lib/
 ADD hadoop-*.conf /usr/local/monit/conf/
 
 RUN mv /etc/hadoop/conf/core-site.xml /etc/hadoop/conf/org.core-site.xml; \
-    chmod 755 /etc/hadoop/conf/core-site.xml; \
-    echo "export HADOOP_MAPRED_HOME=/usr/lib/hadoop-mapreduce" >> /root/.bashrc
+RUN chmod 755 /etc/hadoop/conf/core-site.xml; \
+RUN echo "export HADOOP_MAPRED_HOME=/usr/lib/hadoop-mapreduce" >> /root/.bashrc
 
 CMD ["/usr/local/bin/monit","-I","-c","/usr/local/monit/conf/monitrc"]
 
