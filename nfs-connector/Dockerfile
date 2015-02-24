@@ -10,6 +10,7 @@ ADD nfs-mapping.json /etc/hadoop/conf/
 RUN mv /etc/hadoop/conf/core-site.xml /etc/hadoop/conf/org.core-site.xml
 ADD core-site.xml /etc/hadoop/conf/
 RUN chmod 755 /etc/hadoop/conf/core-site.xml
+ADD hadoop-nfs-connector-1.0.4.jar /usr/lib/hadoop/lib/
 
 CMD ["/usr/local/bin/monit","-I","-c","/usr/local/monit/conf/monitrc"]
 
