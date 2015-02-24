@@ -2,7 +2,7 @@
 #
 # VERSION               0.0.1
 
-FROM tksarah/cdh_pseudo:latest
+FROM tksarah/cdh_pseudo:1.0
 MAINTAINER Takeshi.K <sarah@fm.secret.jp>
 
 ADD hadoop-*.conf /usr/local/monit/conf/
