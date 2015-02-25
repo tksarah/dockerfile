@@ -1,6 +1,7 @@
 # Dockerfile
 ## Demonstration for nfs-connector
-### clustered Data ONTAP Setup
+clustered Data ONTAP Setup
+------
 
 * Create SVM with NFS access
 * Create a volume in the SVM
