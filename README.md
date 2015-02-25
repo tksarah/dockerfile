@@ -46,9 +46,9 @@ Example;
 ```
 
 Example;
-* Edit a value of **spaces -> uri**
-* Edit a value of **spaces -> options -> nfsExportPath**
-* Edit a value of **spaces -> endpoints -> host,path**
+* Edit a value of **spaces : uri**
+* Edit a value of **spaces : options : nfsExportPath**
+* Edit values of **spaces : endpoints : host,path**
 
 ```json
 # nfs-mapping.json file
@@ -106,8 +106,8 @@ drwxr-xr-x   - root root       4096 2015-02-23 16:51 /hadoopvol02
 Access on Browser 
 
 * Monit
- * http://*docker host ip address*/
+ * http://*your docker host ip address*/
 * Hadoop
- * http://*docker host ip address*:8088/
+ * http://*your docker host ip address*:8088/
 
 
