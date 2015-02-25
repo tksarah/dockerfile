@@ -1,7 +1,6 @@
 # Dockerfile
 ## Demonstration for nfs-connector
 ###clustered Data ONTAP Setup
-*****
 
 * Create SVM with NFS access
 * Create a volume in the SVM
@@ -24,12 +23,14 @@ cdot-01::*> vserver nfs modify -vserver nfstestserver -v3-tcp-max-write-size 655
 ### Docker Container Setup
 
 Dockerfile download
-
-`$ git clone https://github.com/tksarah/dockerfile.git`
+```
+$ git clone https://github.com/tksarah/dockerfile.git
+```
 
 Edit **core-site.xml** and **nfs-mapping.json**
-
-`$ cd dockerfile/nfs-connector/`
+```
+$ cd dockerfile/nfs-connector/
+```
 
 Example;
 * Edit a value of **fs.defaultFS**
@@ -107,12 +108,14 @@ Example;
 ```
 
 Build the docker image
-
-`$ docker build -t hoge/fuga .`
+```
+$ docker build -t hoge/fuga .
+```
 
 Run the docker container
-
-`$ docker run -itd -p 8088:8088 -p 80:2812 --name demo hoge/fuga`
+```
+$ docker run -itd -p 8088:8088 -p 80:2812 --name demo hoge/fuga
+```
 
 Verify 
 ```
