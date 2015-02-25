@@ -6,11 +6,9 @@
 2. Create a volume in the SVM
 3. Create at least LIF with data access to the volume from NodeManager
 4. Disable the nfs-rootonly and mount-rootonly options to SVM
-
 ```
 cdot-01::> vserver nfs modify -vserver nfsdrivervserver -nfs-rootonly disabled
 cdot-01::> vserver nfs modify -vserver nfsdrivervserver -mount-rootonly disabled
-
 ```
 5. Increase the NFS read message size to 1MB and the write size to 65536 bytes
 
