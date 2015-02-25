@@ -131,9 +131,9 @@ drwxr-xr-x   - root root       4096 2015-02-23 14:24 /hadoopvol01
 drwxr-xr-x   - root root       4096 2015-02-23 16:51 /hadoopvol02
 ```
 
-Try TeraGen
+Try TeraGen (on another terminal)
 ```
-$ docker exec -it demo bash (on another terminal)
+$ docker exec -it demo bash
 $ yarn jar /usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar teragen 10000 /hadoopvol1/data1MB
 Store with ep Endpoint: host=nfs://192.168.0.60:2049/ export=/htop path=/ has fsId 2147484677
 15/02/25 02:33:31 INFO nfs.NFSv3FileSystem: getAndVerifyHandle(): Parent path nfs://192.168.0.60:2049/hadoopvol01 could not be found
