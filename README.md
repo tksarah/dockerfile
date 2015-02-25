@@ -11,7 +11,7 @@ Edit **core-site.xml** and **nfs-mapping.json**
 
 `$ cd dockerfile/nfs-connector/`
 
-For example;
+Example;
 * Edit a value of **fs.defaultFS**
 
 ```xml
@@ -45,8 +45,10 @@ For example;
   </property>
 ```
 
-* Edit a value of **uri** in spaces
-* Edit a value of **uri** in spaces
+Example;
+* Edit a value of **spaces -> uri**
+* Edit a value of **spaces -> options -> nfsExportPath**
+* Edit a value of **spaces -> endpoints -> host,path**
 
 ```json
 # nfs-mapping.json file
@@ -104,8 +106,8 @@ drwxr-xr-x   - root root       4096 2015-02-23 16:51 /hadoopvol02
 Access on Browser 
 
 * Monit
- ** http://<docker host ip address>/
+ * http://<docker host ip address>/
 * Hadoop
- ** http://<docker host ip address>:8088/
+ * http://<docker host ip address>:8088/
 
 
