@@ -139,6 +139,18 @@ Store with ep Endpoint: host=nfs://192.168.0.60:2049/ export=/htop path=/ has fs
 15/02/25 02:33:32 WARN stream.NFSBufferedOutputStream: Flushing a closed stream. Check your code.
 15/02/25 02:33:32 INFO stream.NFSBufferedOutputStream: STREAMSTATSstreamStatistics:
 STREAMSTATS     name: class org.apache.hadoop.fs.nfs.stream.NFSBufferedInputStream/tmp/hadoop-yarn/staging/root/.staging/job_1424831424592_0001/job.jar
+
+
+....
+
+
+$ hadoop fs -ls -R /hadoopvol1/
+Store with ep Endpoint: host=nfs://192.168.0.60:2049/ export=/htop path=/ has fsId 2147484677
+Store with ep Endpoint: host=nfs://192.168.0.60:2049/ export=null path=/hadoopvol1/ has fsId 2147484677
+drwxrwxrwx   - root root       4096 2015-02-25 03:07 /hadoopvol1/data1MB
+-rw-r--r--   1 root root          0 2015-02-25 03:07 /hadoopvol1/data1MB/_SUCCESS
+-rw-r--r--   1 root root     500000 2015-02-25 03:07 /hadoopvol1/data1MB/part-m-00000
+-rw-r--r--   1 root root     500000 2015-02-25 03:07 /hadoopvol1/data1MB/part-m-00001
 ```
 Stop a container
 ```
