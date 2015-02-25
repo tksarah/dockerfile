@@ -4,19 +4,24 @@
 ### Docker Container セットアップ
 
 Dockerfileダウンロード
-```
-$ git clone https://github.com/tksarah/dockerfile.git
-```
+
+`$ git clone https://github.com/tksarah/dockerfile.git`
 
 
 core-site.xmlとnfs-mapping.jsonを編集
-`$ cd dockerfile/nfs-connector/
 
-AAA
-`$ docker build -t hoge/fuga .
+`$ cd dockerfile/nfs-connector/`
 
-$ docker run -itd -p 8088:8088 -p 80:2812 --name demo hoge/fuga
+Dockerイメージのビルド
 
+`$ docker build -t hoge/fuga .`
+
+Dockerコンテナ起動
+
+`$ docker run -itd -p 8088:8088 -p 80:2812 --name demo hoge/fuga`
+
+確認
+```
 $ docker exec -it demo hadoop fs -ls /
 Store with ep Endpoint: host=nfs://192.168.0.60:2049/ export=/ path=/ has fsId 2147484673
 Found 6 items
@@ -30,3 +35,8 @@ Monit
 Hadoop
  http://192.168.0.123:8088/
 
+```ruby
+require 'redcarpet'
+markdown = Redcarpet.new("Hello World!")
+puts markdown.to_html
+```
