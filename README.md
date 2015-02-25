@@ -112,9 +112,11 @@ Build a docker image
 $ docker build -t hoge/fuga .
 ```
 
-Run a docker container
+Run a container
 ```
 $ docker run --rm -i -t --name demo -p 8088:8088 -p 80:2812 hoge/fuga
+Starting Monit 5.11 daemon with http interface at [0.0.0.0:2812]
+
 ```
 
 Verify 
@@ -138,6 +140,11 @@ Store with ep Endpoint: host=nfs://192.168.0.60:2049/ export=/htop path=/ has fs
 15/02/25 02:33:32 INFO stream.NFSBufferedOutputStream: STREAMSTATSstreamStatistics:
 STREAMSTATS     name: class org.apache.hadoop.fs.nfs.stream.NFSBufferedInputStream/tmp/hadoop-yarn/staging/root/.staging/job_1424831424592_0001/job.jar
 ```
+Stop a container
+```
+$ docker stop demo
+```
+****
 
 Access on Browser 
 
