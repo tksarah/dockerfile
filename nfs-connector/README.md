@@ -121,7 +121,7 @@ Starting Monit 5.11 daemon with http interface at [0.0.0.0:2812]
 
 ```
 
-Verify 
+Verification 
 ```
 $ docker exec -it demo hadoop fs -ls /
 Store with ep Endpoint: host=nfs://192.168.0.60:2049/ export=/ path=/ has fsId 2147484673
