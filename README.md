@@ -126,6 +126,19 @@ drwxrwxrwx   - root root       4096 2015-02-23 17:05 /.snapshot
 drwxr-xr-x   - root root       4096 2015-02-23 14:24 /hadoopvol01
 drwxr-xr-x   - root root       4096 2015-02-23 16:51 /hadoopvol02
 ```
+
+Try TeraGen
+```
+$ docker exec -it demo bash
+yarn jar /usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar teragen 10000 /hadoopvol01/data1MB
+Store with ep Endpoint: host=nfs://10.130.209.167:2049/ export=/htop path=/ has fsId 2147484677
+15/02/25 02:33:31 INFO nfs.NFSv3FileSystem: getAndVerifyHandle(): Parent path nfs://10.130.209.167:2049/hadoopvol01 could not be found
+15/02/25 02:33:31 INFO client.RMProxy: Connecting to ResourceManager at /0.0.0.0:8032
+15/02/25 02:33:32 WARN stream.NFSBufferedOutputStream: Flushing a closed stream. Check your code.
+15/02/25 02:33:32 INFO stream.NFSBufferedOutputStream: STREAMSTATSstreamStatistics:
+STREAMSTATS     name: class org.apache.hadoop.fs.nfs.stream.NFSBufferedInputStream/tmp/hadoop-yarn/staging/root/.staging/job_1424831424592_0001/job.jar
+```
+
 Access on Browser 
 
 * Monit
