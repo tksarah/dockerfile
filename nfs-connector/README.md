@@ -108,18 +108,17 @@ Example;
         ]
 }
 ```
-
 Build a docker image
 ```
 $ docker build -t hoge/fuga .
 ```
-
 Run a container
 ```
 $ docker run --rm -i -t --name demo -p 8088:8088 -p 80:2812 hoge/fuga
 Starting Monit 5.11 daemon with http interface at [0.0.0.0:2812]
 
 ```
+## Try NFS Connector
 
 Verification 
 ```
