@@ -106,8 +106,8 @@ drwxr-xr-x   - root root       4096 2015-02-23 16:51 /hadoopvol02
 Access on Browser 
 
 * Monit
- * [http://<docker host ip address>/]
+ * (http://<docker host ip address>/)
 * Hadoop
- * [http://<docker host ip address>:8088/]
+ * (http://<docker host ip address>:8088/)
 
 
