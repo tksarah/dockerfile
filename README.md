@@ -1,6 +1,6 @@
 # Dockerfile
 ## Demonstration for nfs-connector
-###clustered Data ONTAP Setup
+###Setup clustered Data ONTAP
 
 * Create SVM with NFS access
 * Create a volume in the SVM
@@ -20,7 +20,7 @@ cdot-01::*> vserver nfs modify -vserver nfstestserver -v3-tcp-max-read-size 1048
 cdot-01::*> vserver nfs modify -vserver nfstestserver -v3-tcp-max-write-size 65536
 ```
 
-### Docker Container Setup
+###Setup Docker Container 
 
 Dockerfile download
 ```
