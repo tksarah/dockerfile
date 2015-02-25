@@ -140,9 +140,15 @@ Store with ep Endpoint: host=nfs://192.168.0.60:2049/ export=/htop path=/ has fs
 15/02/25 02:33:32 INFO stream.NFSBufferedOutputStream: STREAMSTATSstreamStatistics:
 STREAMSTATS     name: class org.apache.hadoop.fs.nfs.stream.NFSBufferedInputStream/tmp/hadoop-yarn/staging/root/.staging/job_1424831424592_0001/job.jar
 
-
 ....
 
+        org.apache.hadoop.examples.terasort.TeraGen$Counters
+                CHECKSUM=21555350172850
+        File Input Format Counters
+                Bytes Read=0
+        File Output Format Counters
+                Bytes Written=1000000
+$ 
 
 $ hadoop fs -ls -R /hadoopvol1/
 Store with ep Endpoint: host=nfs://192.168.0.60:2049/ export=/htop path=/ has fsId 2147484677
