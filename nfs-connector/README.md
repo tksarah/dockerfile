@@ -131,7 +131,7 @@ drwxr-xr-x   - root root       4096 2015-02-23 14:24 /hadoopvol01
 drwxr-xr-x   - root root       4096 2015-02-23 16:51 /hadoopvol02
 ```
 
-Try TeraGen (on another terminal)
+Try TeraGen
 ```
 $ docker exec -it demo bash
 $ yarn jar /usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar teragen 10000 /hadoopvol1/data1MB
