@@ -2,12 +2,19 @@
 ## nfs-connector
 
 Dockerfileダウンロード
+
 `$ git clone https://github.com/tksarah/dockerfile.git`
 
-```
-$ cd dockerfile/nfs-connector/
-＊core-site.xmlとnfs-mapping.jsonを編集
 
+core-site.xmlとnfs-mapping.jsonを編集
+
+`$ cd dockerfile/nfs-connector/`
+
+> Blogck Quotes
+> Block 2
+
+
+```
 $ docker build -t hoge/fuga .
 
 $ docker run -itd -p 8088:8088 -p 80:2812 --name demo hoge/fuga
