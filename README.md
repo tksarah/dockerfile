@@ -3,22 +3,38 @@
 ### clustered Data ONTAP セットアップ
 ### Docker Container セットアップ
 
-Dockerfileダウンロード
+Dockerfile download
 
 `$ git clone https://github.com/tksarah/dockerfile.git`
 
-core-site.xmlとnfs-mapping.jsonを編集
+Edit **core-site.xml** and **nfs-mapping.json**
 
 `$ cd dockerfile/nfs-connector/`
 
+```xml
+<configuration>
+
+  <!-- NetApp NFS Connector Setting -->
+  <property>
+    <name>fs.nfs.prefetch</name>
+    <value>true</value>
+  </property>
+
+  <property>
+    <name>fs.defaultFS</name>
+    <value>nfs://node01-ip01:2049</value>
+  </property>
+```
+
 ```json
+# nfs-mapping.json file
 {
         "spaces": [
                 {
                 "name": "ntap",
-                "uri": "nfs://10.130.209.167:2049/",
+                "uri": "nfs:/node01-ip01/:2049/",
                 "options": {
-                        "nfsExportPath": "/htop",
+                        "nfsExportPath": "/",
                         "nfsReadSizeBits": 20,
                         "nfsWriteSizeBits": 20,
                         "nfsSplitSizeBits": 30,
@@ -33,12 +49,12 @@ core-site.xmlとnfs-mapping.jsonを編集
                 },
                 "endpoints": [
                         {
-                        "host": "nfs://10.130.209.167:2049/",
-                        "path": "/hadoopvol1/"
+                        "host": "nfs://node01-ip01:2049/",
+                        "path": "/vol01/"
                         },
                         {
-                        "host": "nfs://10.130.209.168:2049/",
-                        "path": "/hadoopvol2/"
+                        "host": "nfs://node01-ip02:2049/",
+                        "path": "/vol02/"
                         }
                 ]
                 }
