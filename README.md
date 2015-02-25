@@ -114,7 +114,7 @@ $ docker build -t hoge/fuga .
 
 Run a docker container
 ```
-$ docker run -itd -p 8088:8088 -p 80:2812 --name demo hoge/fuga
+$ docker run --rm -i -t --name demo -p 8088:8088 -p 80:2812 hoge/fuga
 ```
 
 Verify 
