@@ -3,9 +3,11 @@
 ### clustered Data ONTAP セットアップ
 ### Docker Container セットアップ
 
-- Dockerfileダウンロード
+* Dockerfileダウンロード
+
 `$ git clone https://github.com/tksarah/dockerfile.git`
-- core-site.xmlとnfs-mapping.jsonを編集
+* core-site.xmlとnfs-mapping.jsonを編集
+
 `$ cd dockerfile/nfs-connector/`
 
 Dockerイメージのビルド
