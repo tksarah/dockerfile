@@ -1,7 +1,7 @@
 # Dockerfile
 ## nfs-connector
-### clustered Data ONTAP セットアップ
-### Docker Container セットアップ
+### clustered Data ONTAP Setup
+### Docker Container Setup
 
 Dockerfile download
 
@@ -11,7 +11,11 @@ Edit **core-site.xml** and **nfs-mapping.json**
 
 `$ cd dockerfile/nfs-connector/`
 
+For example;
+* Edit a value of **fs.defaultFS**
+
 ```xml
+# core-site.xml
 <configuration>
 
   <!-- NetApp NFS Connector Setting -->
@@ -24,7 +28,25 @@ Edit **core-site.xml** and **nfs-mapping.json**
     <name>fs.defaultFS</name>
     <value>nfs://node01-ip01:2049</value>
   </property>
+
+  <property>
+    <name>fs.AbstractFileSystem.nfs.impl</name>
+    <value>org.apache.hadoop.fs.nfs.NFSv3AbstractFilesystem</value>
+  </property>
+
+  <property>
+    <name>fs.nfs.impl</name>
+    <value>org.apache.hadoop.fs.nfs.NFSv3FileSystem</value>
+  </property>
+
+  <property>
+    <name>fs.nfs.configuration</name>
+    <value>/etc/hadoop/conf/nfs-mapping.json</value>
+  </property>
 ```
+
+* Edit a value of **uri** in spaces
+* Edit a value of **uri** in spaces
 
 ```json
 # nfs-mapping.json file
@@ -62,15 +84,15 @@ Edit **core-site.xml** and **nfs-mapping.json**
 }
 ```
 
-Dockerイメージのビルド
+Build the docker image
 
 `$ docker build -t hoge/fuga .`
 
-Dockerコンテナ起動
+Run the docker container
 
 `$ docker run -itd -p 8088:8088 -p 80:2812 --name demo hoge/fuga`
 
-確認
+Verify 
 ```
 $ docker exec -it demo hadoop fs -ls /
 Store with ep Endpoint: host=nfs://192.168.0.60:2049/ export=/ path=/ has fsId 2147484673
@@ -79,14 +101,11 @@ drwxrwxrwx   - root root       4096 2015-02-23 17:05 /.snapshot
 drwxr-xr-x   - root root       4096 2015-02-23 14:24 /hadoopvol01
 drwxr-xr-x   - root root       4096 2015-02-23 16:51 /hadoopvol02
 ```
+Access on Browser 
 
-Monit
- http://192.168.0.123/
-Hadoop
- http://192.168.0.123:8088/
+* Monit
+ ** http://<docker host ip address>/
+* Hadoop
+ ** http://<docker host ip address>:8088/
 
-```ruby
-require 'redcarpet'
-markdown = Redcarpet.new("Hello World!")
-puts markdown.to_html
-```
+
