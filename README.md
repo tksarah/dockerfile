@@ -1,5 +1,8 @@
 # Dockerfile
 ## Demonstration for nfs-connector
+
+Details : [NetApp Hadoop NFS Connector](https://github.com/NetApp/NetApp-Hadoop-NFS-Connector/releases)
+
 ###Setup clustered Data ONTAP
 
 * Create SVM with NFS access
