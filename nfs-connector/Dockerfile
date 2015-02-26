@@ -1,6 +1,6 @@
 # NetApp NFS Connector with CDH 5.3.1 on Ubuntu 14.04
 #
-# VERSION               1.0.0
+# VERSION               1.0.1
 
 FROM tksarah/cdh_nfs_connector:latest
 MAINTAINER Takeshi.K <sarah@fm.secret.jp>
