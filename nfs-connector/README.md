@@ -178,8 +178,6 @@ $ docker stop demo
 
 Access on Browser 
 
-* Monit
- * http://*your docker host ip address*/
 * Hadoop
  * http://*your docker host ip address*:8088/
 
