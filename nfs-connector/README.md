@@ -115,6 +115,10 @@ $ docker build -t hoge/fuga .
 Run a container
 ```
 $ docker run --rm -i -t --name demo -p 8088:8088 hoge/fuga
+```
+or
+```
+$ docker run --rm -i -t --name demo -p 8088:8088 hoge/fuga /sbin/my_init -- bash -l
 *** Running /etc/my_init.d/00_regen_ssh_host_keys.sh...
 No SSH host key available. Generating one...
 Creating SSH2 RSA key; this may take some time ...
@@ -124,9 +128,12 @@ Creating SSH2 ED25519 key; this may take some time ...
 invoke-rc.d: policy-rc.d denied execution of restart.
 *** Running /etc/rc.local...
 *** Booting runit daemon...
-*** Runit started as PID 97
-starting resourcemanager, logging to /var/log/hadoop-yarn/yarn-yarn-resourcemanager-a271a3dd144d.out
-starting nodemanager, logging to /var/log/hadoop-yarn/yarn-yarn-nodemanager-a271a3dd144d.out
+*** Runit started as PID 95
+*** Running bash -l...
+root@e11fd5a558f1:/# starting nodemanager, logging to /var/log/hadoop-yarn/yarn-yarn-nodemanager-e11fd5a558f1.out
+starting resourcemanager, logging to /var/log/hadoop-yarn/yarn-yarn-resourcemanager-e11fd5a558f1.out
+
+root@e11fd5a558f1:/#
 
 ```
 ## Try NFS Connector
