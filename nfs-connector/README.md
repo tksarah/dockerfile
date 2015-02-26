@@ -4,6 +4,12 @@ Details : [NetApp Hadoop NFS Connector](https://github.com/NetApp/NetApp-Hadoop-
 
 ##Setup clustered Data ONTAP
 
+* Ubuntu 14.04 x86_64 (baseimage-docker)
+* CDH 5.3.1
+* clustered Data ONTAP 8.2
+
+##Setup clustered Data ONTAP
+
 * Create SVM with NFS access
 * Create a volume in the SVM
 * Create at least LIF with data access to the volume from NodeManager
