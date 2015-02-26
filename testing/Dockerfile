@@ -8,10 +8,10 @@ MAINTAINER Takeshi.K <sarah@fm.secret.jp>
 # my_init Setting
 RUN  mkdir -p /etc/service/hadoop-yarn-resourcemanager && \
      mkdir -p /etc/service/hadoop-yarn-nodemanager && \
-     mv /etc/service/syslog-ng && \
-     mv /etc/service/syslog-forwarder && \
-     mv /etc/service/cron && \
-     mv /etc/service/sshd
+     mv /etc/service/syslog-ng /root && \
+     mv /etc/service/syslog-forwarder /root && \
+     mv /etc/service/cron /root && \
+     mv /etc/service/sshd /root
 COPY r-run /etc/service/hadoop-yarn-resourcemanager/run
 COPY n-run /etc/service/hadoop-yarn-nodemanager/run
 RUN  chmod 755 /etc/service/hadoop-yarn-resourcemanager/run && \
