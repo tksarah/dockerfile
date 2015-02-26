@@ -1,4 +1,4 @@
-# Demonstration for nfs-connector
+# Demonstration for nfs-connector on Ubuntu 14.04
 
 Details : [NetApp Hadoop NFS Connector](https://github.com/NetApp/NetApp-Hadoop-NFS-Connector)
 

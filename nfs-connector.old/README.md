@@ -1,4 +1,4 @@
-# Demonstration for nfs-connector
+# Demonstration for nfs-connector on CentOS 6.6
 
 Details : [NetApp Hadoop NFS Connector](https://github.com/NetApp/NetApp-Hadoop-NFS-Connector)
 

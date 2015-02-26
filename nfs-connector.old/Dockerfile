@@ -1,4 +1,4 @@
-# NetApp NFS Connector with CDH 5.3.1
+# NetApp NFS Connector with CDH 5.3.1 on CentOS 6.6
 #
 # VERSION               0.0.1
 
