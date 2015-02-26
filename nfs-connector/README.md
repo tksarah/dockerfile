@@ -154,8 +154,6 @@ starting resourcemanager, logging to /var/log/hadoop-yarn/yarn-yarn-resourcemana
 root@e11fd5a558f1:/#
 
 ``` 
-<a name="try"></a>
-##Try NFS Connector
 
 Verification 
 ```
@@ -166,6 +164,10 @@ drwxrwxrwx   - root root       4096 2015-02-23 17:05 /.snapshot
 drwxr-xr-x   - root root       4096 2015-02-23 14:24 /hadoopvol01
 drwxr-xr-x   - root root       4096 2015-02-23 16:51 /hadoopvol02
 ```
+
+<a name="try"></a>
+##Try NFS Connector
+
 
 Try TeraGen
 ```
@@ -211,5 +213,5 @@ Access on Browser
 ##Test Job
 
 ```
- hadoop jar /usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar pi 2 100
+$ hadoop jar /usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar pi 2 100
 ```
