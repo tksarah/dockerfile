@@ -183,4 +183,8 @@ Access on Browser
 * Hadoop
  * http://*your docker host ip address*:8088/
 
+### Test Job
 
+```
+ hadoop jar /usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar pi 2 100
+```
