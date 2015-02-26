@@ -1,17 +1,29 @@
-# NetApp NFS Connector with CDH 5.3.1
+# NetApp NFS Connector with CDH 5.3.1 on Ubuntu 14.04
 #
-# VERSION               0.0.1
+# VERSION               1.0.0
 
-FROM tksarah/cdh_pseudo:1.0
+FROM tksarah/cdh_nfs_connector:latest
 MAINTAINER Takeshi.K <sarah@fm.secret.jp>
 
-ADD nfs-mapping.json /etc/hadoop/conf/ 
-RUN mv /etc/hadoop/conf/core-site.xml /etc/hadoop/conf/org.core-site.xml
-ADD core-site.xml /etc/hadoop/conf/ 
-RUN chmod 755 /etc/hadoop/conf/core-site.xml
-ADD hadoop-nfs-connector-1.0.4.jar /usr/lib/hadoop/lib/
-ADD hadoop-*.conf /usr/local/monit/conf/
-RUN echo "export HADOOP_MAPRED_HOME=/usr/lib/hadoop-mapreduce" >> /root/.bashrc
+# my_init Setting
+RUN  mkdir -p /etc/service/hadoop-yarn-resourcemanager && \
+     mkdir -p /etc/service/hadoop-yarn-nodemanager && \
+     mv /etc/service/syslog-ng /root && \
+     mv /etc/service/syslog-forwarder /root && \
+     mv /etc/service/cron /root && \
+     mv /etc/service/sshd /root
+COPY r-run /etc/service/hadoop-yarn-resourcemanager/run
+COPY n-run /etc/service/hadoop-yarn-nodemanager/run
+RUN  chmod 755 /etc/service/hadoop-yarn-resourcemanager/run && \
+     chmod 755 /etc/service/hadoop-yarn-nodemanager/run
+RUN  mv /usr/lib/hadoop-yarn/sbin/yarn-daemon.sh /usr/lib/hadoop-yarn/sbin/org.yarn-daemon.sh
+COPY yarn-daemon.sh /usr/lib/hadoop-yarn/sbin/yarn-daemon.sh
 
-CMD ["/usr/local/bin/monit","-I","-c","/usr/local/monit/conf/monitrc"]
+# NFS Connector Setting
+COPY nfs-mapping.json /etc/hadoop/conf/
+RUN  mv /etc/hadoop/conf/core-site.xml /etc/hadoop/conf/org.core-site.xml
+COPY core-site.xml /etc/hadoop/conf/
+RUN  chmod 755 /etc/hadoop/conf/core-site.xml
+COPY hadoop-nfs-connector-1.0.4.jar /usr/lib/hadoop/lib/
 
+CMD ["/sbin/my_init"]
