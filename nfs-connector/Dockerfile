@@ -6,12 +6,14 @@ FROM tksarah/cdh_nfs_connector:latest
 MAINTAINER Takeshi.K <sarah@fm.secret.jp>
 
 # my_init Setting
+COPY add_logf4.txt /tmp/
 RUN  mkdir -p /etc/service/hadoop-yarn-resourcemanager && \
      mkdir -p /etc/service/hadoop-yarn-nodemanager && \
      mv /etc/service/syslog-ng /root && \
      mv /etc/service/syslog-forwarder /root && \
      mv /etc/service/cron /root && \
-     mv /etc/service/sshd /root
+     mv /etc/service/sshd /root && \
+     cat /tmp/add_logf4.txt >> /etc/hadoop/conf/log4j.properties
 COPY r-run /etc/service/hadoop-yarn-resourcemanager/run
 COPY n-run /etc/service/hadoop-yarn-nodemanager/run
 RUN  chmod 755 /etc/service/hadoop-yarn-resourcemanager/run && \

@@ -1,0 +1,15 @@
+# use following for console
+nfsconnector.logger=ERROR,console
+
+# use following for output to a log file
+#nfsconnector.logger=WARN,NFSCONNECTOR
+
+# define NFSCONNECTOR logger
+log4j.appender.NFSCONNECTOR=org.apache.log4j.RollingFileAppender
+log4j.appender.NFSCONNECTOR.File=${hadoop.log.dir}/nfsconnector.log
+log4j.appender.NFSCONNECTOR.layout=org.apache.log4j.PatternLayout
+log4j.appender.NFSCONNECTOR.layout.ConversionPattern=%d{ISO8601} %p %c{2}: %m%n
+
+# apply the nfs connector logger for the following classes
+log4j.logger.org.apache.hadoop.fs.nfs.stream.NFSBufferedInputStream=${nfsconnector.logger}
+log4j.logger.org.apache.hadoop.fs.nfs.stream.NFSBufferedOutputStream=${nfsconnector.logger}
