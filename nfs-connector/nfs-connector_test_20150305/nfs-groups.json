@@ -1,0 +1,16 @@
+{
+  "groupnames":[
+    {
+      "groupName":"root",
+      "groupID":"0"
+    },
+    {
+      "groupName":"testuser",
+      "groupID":"501"
+    },
+    {
+      "groupName":"hoge",
+      "groupID":"502"
+    }
+  ]
+}
