@@ -26,12 +26,10 @@ Dockerfile download
 $ git clone https://github.com/tksarah/dockerfile.git
 ```
 
-Edit **core-site.xml** and **nfs-mapping.json**
 ```
 $ cd dockerfile/nfs-connector/test-20150305
 ```
 
-```
 Build a docker image
 ```
 $ docker build -t hoge/fuga .
