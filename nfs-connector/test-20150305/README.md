@@ -71,6 +71,7 @@ drwxrwxrwx   - hdfs hdfs       4096 2015-03-14 03:46 /hbase
 drwxrwxrwx   - hdfs hdfs       4096 2015-03-14 03:46 /tmp
 drwxrwxrwx   - hdfs hdfs       4096 2015-03-14 03:50 /user
 drwxrwxrwx   - hdfs hdfs       4096 2015-03-14 03:47 /var
+
 testuser@6c89346c4859:~$ hadoop fs -ls
 15/03/14 04:29:20 INFO nfs.NFSv3FileSystem: User config file: /etc/hadoop/conf/nfs-users.json
 15/03/14 04:29:20 INFO nfs.NFSv3FileSystem: Group config file: /etc/hadoop/conf/nfs-groups.json
@@ -113,7 +114,35 @@ drwxrwxrwx   - root root       4096 2015-02-25 03:07 /hadoopvol1/data1MB
 ```
 Stop a container
 ```
-$ docker stop demo
+testuser@6c89346c4859:~$ exit
+logout
+root@6c89346c4859:/# exit
+logout
+Clean up test data directories.
+15/03/14 04:35:14 INFO nfs.NFSv3FileSystem: User config file: /etc/hadoop/conf/nfs-users.json
+15/03/14 04:35:14 INFO nfs.NFSv3FileSystem: Group config file: /etc/hadoop/conf/nfs-groups.json
+Store with ep Endpoint: host=nfs://10.128.218.44:2049/ export=/htop path=/ has fsId 2147484677
+15/03/14 04:35:16 INFO nfs.NFSv3FileSystem: User config file: /etc/hadoop/conf/nfs-users.json
+15/03/14 04:35:16 INFO nfs.NFSv3FileSystem: Group config file: /etc/hadoop/conf/nfs-groups.json
+Store with ep Endpoint: host=nfs://10.128.218.44:2049/ export=/htop path=/ has fsId 2147484677
+15/03/14 04:35:18 INFO nfs.NFSv3FileSystem: User config file: /etc/hadoop/conf/nfs-users.json
+15/03/14 04:35:18 INFO nfs.NFSv3FileSystem: Group config file: /etc/hadoop/conf/nfs-groups.json
+Store with ep Endpoint: host=nfs://10.128.218.44:2049/ export=/htop path=/ has fsId 2147484677
+15/03/14 04:35:20 INFO nfs.NFSv3FileSystem: User config file: /etc/hadoop/conf/nfs-users.json
+15/03/14 04:35:20 INFO nfs.NFSv3FileSystem: Group config file: /etc/hadoop/conf/nfs-groups.json
+Store with ep Endpoint: host=nfs://10.128.218.44:2049/ export=/htop path=/ has fsId 2147484677
+15/03/14 04:35:22 INFO nfs.NFSv3FileSystem: User config file: /etc/hadoop/conf/nfs-users.json
+15/03/14 04:35:22 INFO nfs.NFSv3FileSystem: Group config file: /etc/hadoop/conf/nfs-groups.json
+Store with ep Endpoint: host=nfs://10.128.218.44:2049/ export=/htop path=/ has fsId 2147484677
+Clean up complete.
+*** bash exited with status 0.
+*** Shutting down runit daemon (PID 94)...
+*** Killing all processes...
+
+
+Session terminated, terminating shell...Session terminated, terminating shell... ...terminated.
+ ...terminated.
+$
 ```
 ****
 
