@@ -27,8 +27,8 @@ COPY nfs-users.json /etc/hadoop/conf/
 COPY nfs-groups.json /etc/hadoop/conf/
 RUN  groupadd -g 501 testuser && \
      groupadd -g 502 hoge && \
-     useradd -u 501 testuser -g 501 && \
-     useradd -u 502 hoge -g 502 && \
+     useradd -m -u 501 testuser -g 501 && \
+     useradd -m -u 502 hoge -g 502 && \
      mv /etc/hadoop/conf/core-site.xml /etc/hadoop/conf/org.core-site.xml
 COPY core-site.xml /etc/hadoop/conf/
 RUN  chmod 755 /etc/hadoop/conf/core-site.xml && \
@@ -37,5 +37,8 @@ RUN  chmod 755 /etc/hadoop/conf/core-site.xml && \
 # Copy Module
 #COPY hadoop-nfs-connector-1.0.4.jar /usr/lib/hadoop/lib/
 COPY hadoop-nfs-connector-2.0.0-SNAPSHOT.jar /usr/lib/hadoop/lib/
+
+# Clean up
+COPY .bash_logout /root/
 
 CMD ["/sbin/my_init"]

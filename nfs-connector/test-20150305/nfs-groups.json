@@ -5,6 +5,10 @@
       "groupID":"0"
     },
     {
+      "groupName":"hdfs",
+      "groupID":"110"
+    },
+    {
       "groupName":"testuser",
       "groupID":"501"
     },

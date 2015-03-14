@@ -27,7 +27,7 @@
 
   <property>
     <name>fs.defaultFS</name>
-    <value>nfs://192.168.0.60:2049</value>
+    <value>nfs://10.128.218.44:2049</value>
   </property>
 
   <property>

@@ -23,6 +23,7 @@ Details : [NetApp Hadoop NFS Connector](https://github.com/NetApp/NetApp-Hadoop-
 
 * Create SVM with NFS access
 * Create a volume in the SVM
+* Set 777 unix permission for Junction-path
 * Create at least LIF with data access to the volume from NodeManager
 * Disable the nfs-rootonly and mount-rootonly options to SVM
 ```

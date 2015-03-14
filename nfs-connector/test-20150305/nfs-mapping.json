@@ -2,9 +2,9 @@
         "spaces": [
                 {
                 "name": "ntap",
-                "uri": "nfs://192.168.0.60:2049/",
+                "uri": "nfs://10.128.218.44:2049/",
                 "options": {
-                        "nfsExportPath": "/",
+                        "nfsExportPath": "/htop",
                         "nfsReadSizeBits": 20,
                         "nfsWriteSizeBits": 20,
                         "nfsSplitSizeBits": 30,
@@ -21,12 +21,12 @@
                 },
                 "endpoints": [
                         {
-                        "host": "nfs://192.168.0.60:2049/",
-                        "path": "/hadoopvol1/"
+                        "host": "nfs://10.128.218.44:2049/",
+                        "path": "/htop/hadoopvol1/"
                         },
                         {
-                        "host": "nfs://192.168.0.61:2049/",
-                        "path": "/hadoopvol2/"
+                        "host": "nfs://10.128.218.45:2049/",
+                        "path": "/htop/hadoopvol2/"
                         }
                 ]
                 }
