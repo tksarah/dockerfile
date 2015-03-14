@@ -22,7 +22,8 @@ Details : [NetApp Hadoop NFS Connector](https://github.com/NetApp/NetApp-Hadoop-
 ##Setup clustered Data ONTAP
 
 * Create SVM with NFS access
-* Create a volume in the SVM
+* Create some volumes in the SVM
+* Set 777 unix permission for junction path of volumes
 * Create at least LIF with data access to the volume from NodeManager
 * Disable the nfs-rootonly and mount-rootonly options to SVM
 ```
@@ -49,7 +50,7 @@ $ git clone https://github.com/tksarah/dockerfile.git
 
 Edit **core-site.xml** and **nfs-mapping.json**
 ```
-$ cd dockerfile/nfs-connector/
+$ cd dockerfile/nfs-connector/test-20150305
 ```
 
 Example;
