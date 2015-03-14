@@ -15,7 +15,8 @@ Details : [NetApp Hadoop NFS Connector](https://github.com/NetApp/NetApp-Hadoop-
 
 * Ubuntu 14.04 x86_64 (baseimage-docker)
 * CDH 5.3.1
-* clustered Data ONTAP 8.2.x or later (single node)
+* clustered Data ONTAP 8.2.x or later 
+  * Pre configuration on a single node cluster
   * 1 SVM , 2 LIFs , 2 Volumes
 
 <a name="cont"></a>

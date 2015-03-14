@@ -5,18 +5,10 @@ Details : [NetApp Hadoop NFS Connector](https://github.com/NetApp/NetApp-Hadoop-
 
 ##Table of contents
 
- * [Demo Enviromnent](#env)
  * [Setup clustered Data ONTAP](#cdot)
  * [Setup Docker Container](#cont)
  * [Try NFS Connector](#try)
  * [Test Job](#test)
-
-<a name="env"></a>
-##Demo Environment  
-
-* Ubuntu 14.04 x86_64 (baseimage-docker)
-* CDH 5.3.1
-* clustered Data ONTAP 8.2.x or later
 
 <a name="cdot"></a>
 ##Setup clustered Data ONTAP
@@ -98,17 +90,19 @@ Example;
         "spaces": [
                 {
                 "name": "ntap",
-                "uri": "nfs:/node01-ip01/:2049/",
+                "uri": "nfs://node01-ip01:2049/",
                 "options": {
                         "nfsExportPath": "/",
                         "nfsReadSizeBits": 20,
                         "nfsWriteSizeBits": 20,
                         "nfsSplitSizeBits": 30,
-                        "nfsAuthScheme": "AUTH_NONE",
+                        "nfsAuthScheme": "AUTH_SYS",
                         "nfsUsername": "root",
                         "nfsGroupname": "root",
                         "nfsUid": 0,
                         "nfsGid": 0,
+                        "nfsUserConfigFile": "/etc/hadoop/conf/nfs-users.json",
+                        "nfsGroupConfigFile": "/etc/hadoop/conf/nfs-groups.json",
                         "nfsPort": 2049,
                         "nfsMountPort": -1,
                         "nfsRpcbindPort": 111
@@ -116,11 +110,11 @@ Example;
                 "endpoints": [
                         {
                         "host": "nfs://node01-ip01:2049/",
-                        "path": "/vol01/"
+                        "path": "/htop/hadoopvol1/"
                         },
                         {
                         "host": "nfs://node01-ip02:2049/",
-                        "path": "/vol02/"
+                        "path": "/htop/hadoopvol2/"
                         }
                 ]
                 }
@@ -138,22 +132,6 @@ $ docker run --rm -i -t --name demo -p 8088:8088 hoge/fuga
 or
 ```
 $ docker run --rm -i -t --name demo -p 8088:8088 hoge/fuga /sbin/my_init -- bash -l
-*** Running /etc/my_init.d/00_regen_ssh_host_keys.sh...
-No SSH host key available. Generating one...
-Creating SSH2 RSA key; this may take some time ...
-Creating SSH2 DSA key; this may take some time ...
-Creating SSH2 ECDSA key; this may take some time ...
-Creating SSH2 ED25519 key; this may take some time ...
-invoke-rc.d: policy-rc.d denied execution of restart.
-*** Running /etc/rc.local...
-*** Booting runit daemon...
-*** Runit started as PID 95
-*** Running bash -l...
-root@e11fd5a558f1:/# starting nodemanager, logging to /var/log/hadoop-yarn/yarn-yarn-nodemanager-e11fd5a558f1.out
-starting resourcemanager, logging to /var/log/hadoop-yarn/yarn-yarn-resourcemanager-e11fd5a558f1.out
-
-root@e11fd5a558f1:/#
-
 ``` 
 
 Verification 
@@ -202,17 +180,4 @@ drwxrwxrwx   - root root       4096 2015-02-25 03:07 /hadoopvol1/data1MB
 Stop a container
 ```
 $ docker stop demo
-```
-****
-
-Access on Browser 
-
-* Hadoop
- * http://*your docker host ip address*:8088/
-
-<a name="test"></a>
-##Test Job
-
-```
-$ hadoop jar /usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar pi 2 100
 ```
