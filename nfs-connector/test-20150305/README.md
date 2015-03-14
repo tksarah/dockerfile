@@ -6,7 +6,6 @@ Details : [NetApp Hadoop NFS Connector](https://github.com/NetApp/NetApp-Hadoop-
 ##Table of contents
 
  * [Demo Enviromnent](#env)
- * [Setup clustered Data ONTAP](#cdot)
  * [Setup Docker Container](#cont)
  * [Try NFS Connector](#try)
  * [Test Job](#test)
@@ -16,29 +15,8 @@ Details : [NetApp Hadoop NFS Connector](https://github.com/NetApp/NetApp-Hadoop-
 
 * Ubuntu 14.04 x86_64 (baseimage-docker)
 * CDH 5.3.1
-* clustered Data ONTAP 8.2.x or later
-
-<a name="cdot"></a>
-##Setup clustered Data ONTAP
-
-* Create SVM with NFS access
-* Create some volumes in the SVM
-* Set 777 unix permission for junction path of volumes
-* Create at least LIF with data access to the volume from NodeManager
-* Disable the nfs-rootonly and mount-rootonly options to SVM
-```
-cdot-01::> vserver nfs modify -vserver nfstestserver -nfs-rootonly disabled
-cdot-01::> vserver nfs modify -vserver nfstestserver -mount-rootonly disabled
-```
-* Increase the NFS read message size to 1MB and the write size to 65536 bytes
-
-```
-cdot-01::> set advanced
-Warning: These advanced commands are potentially dangerous; use them only when directed to do so by NetApp personnel.
-Do you want to continue? {y|n}: y
-cdot-01::*> vserver nfs modify -vserver nfstestserver -v3-tcp-max-read-size 1048576
-cdot-01::*> vserver nfs modify -vserver nfstestserver -v3-tcp-max-write-size 65536
-```
+* clustered Data ONTAP 8.2.x or later (single node)
+  * 1 SVM , 2 LIFs , 2 Volumes
 
 <a name="cont"></a>
 ##Setup Docker Container 
@@ -53,89 +31,12 @@ Edit **core-site.xml** and **nfs-mapping.json**
 $ cd dockerfile/nfs-connector/test-20150305
 ```
 
-Example;
-* Edit a value of **fs.defaultFS**
-
-```xml
-# core-site.xml
-<configuration>
-
-  <!-- NetApp NFS Connector Setting -->
-  <property>
-    <name>fs.nfs.prefetch</name>
-    <value>true</value>
-  </property>
-
-  <property>
-    <name>fs.defaultFS</name>
-    <value>nfs://node01-ip01:2049</value>
-  </property>
-
-  <property>
-    <name>fs.AbstractFileSystem.nfs.impl</name>
-    <value>org.apache.hadoop.fs.nfs.NFSv3AbstractFilesystem</value>
-  </property>
-
-  <property>
-    <name>fs.nfs.impl</name>
-    <value>org.apache.hadoop.fs.nfs.NFSv3FileSystem</value>
-  </property>
-
-  <property>
-    <name>fs.nfs.configuration</name>
-    <value>/etc/hadoop/conf/nfs-mapping.json</value>
-  </property>
-```
-
-Example;
-* Edit a value of **spaces : uri**
-* Edit a value of **spaces : options : nfsExportPath**
-* Edit two values of **spaces : endpoints : host,path**
-
-```json
-# nfs-mapping.json file
-{
-        "spaces": [
-                {
-                "name": "ntap",
-                "uri": "nfs:/node01-ip01/:2049/",
-                "options": {
-                        "nfsExportPath": "/",
-                        "nfsReadSizeBits": 20,
-                        "nfsWriteSizeBits": 20,
-                        "nfsSplitSizeBits": 30,
-                        "nfsAuthScheme": "AUTH_NONE",
-                        "nfsUsername": "root",
-                        "nfsGroupname": "root",
-                        "nfsUid": 0,
-                        "nfsGid": 0,
-                        "nfsPort": 2049,
-                        "nfsMountPort": -1,
-                        "nfsRpcbindPort": 111
-                },
-                "endpoints": [
-                        {
-                        "host": "nfs://node01-ip01:2049/",
-                        "path": "/vol01/"
-                        },
-                        {
-                        "host": "nfs://node01-ip02:2049/",
-                        "path": "/vol02/"
-                        }
-                ]
-                }
-        ]
-}
 ```
 Build a docker image
 ```
 $ docker build -t hoge/fuga .
 ```
 Run a container
-```
-$ docker run --rm -i -t --name demo -p 8088:8088 hoge/fuga
-```
-or
 ```
 $ docker run --rm -i -t --name demo -p 8088:8088 hoge/fuga /sbin/my_init -- bash -l
 *** Running /etc/my_init.d/00_regen_ssh_host_keys.sh...
@@ -147,23 +48,36 @@ Creating SSH2 ED25519 key; this may take some time ...
 invoke-rc.d: policy-rc.d denied execution of restart.
 *** Running /etc/rc.local...
 *** Booting runit daemon...
-*** Runit started as PID 95
+*** Runit started as PID 94
 *** Running bash -l...
-root@e11fd5a558f1:/# starting nodemanager, logging to /var/log/hadoop-yarn/yarn-yarn-nodemanager-e11fd5a558f1.out
-starting resourcemanager, logging to /var/log/hadoop-yarn/yarn-yarn-resourcemanager-e11fd5a558f1.out
+root@6c89346c4859:/# starting nodemanager, logging to /var/log/hadoop-yarn/yarn-yarn-nodemanager-6c89346c4859.out
+starting resourcemanager, logging to /var/log/hadoop-yarn/yarn-yarn-resourcemanager-6c89346c4859.out
 
-root@e11fd5a558f1:/#
+root@6c89346c4859:/#
 
 ``` 
 
 Verification 
 ```
-$ docker exec -it demo hadoop fs -ls /
-Store with ep Endpoint: host=nfs://192.168.0.60:2049/ export=/ path=/ has fsId 2147484673
-Found 3 items
-drwxrwxrwx   - root root       4096 2015-02-23 17:05 /.snapshot
-drwxr-xr-x   - root root       4096 2015-02-23 14:24 /hadoopvol01
-drwxr-xr-x   - root root       4096 2015-02-23 16:51 /hadoopvol02
+root@6c89346c4859:/# su - testuser
+testuser@6c89346c4859:~$ hadoop fs -ls /
+15/03/14 04:29:11 INFO nfs.NFSv3FileSystem: User config file: /etc/hadoop/conf/nfs-users.json
+15/03/14 04:29:11 INFO nfs.NFSv3FileSystem: Group config file: /etc/hadoop/conf/nfs-groups.json
+Store with ep Endpoint: host=nfs://10.128.218.44:2049/ export=/htop path=/ has fsId 2147484677
+Found 8 items
+drwxrwxrwx   - root root       4096 2015-02-21 00:15 /.snapshot
+drwxrwxrwx   - hdfs hdfs       4096 2015-03-14 03:46 /benchmarks
+drwxrwxrwx   - root root       4096 2015-03-14 04:13 /hadoopvol1
+drwxrwxrwx   - root root       4096 2015-03-14 04:06 /hadoopvol2
+drwxrwxrwx   - hdfs hdfs       4096 2015-03-14 03:46 /hbase
+drwxrwxrwx   - hdfs hdfs       4096 2015-03-14 03:46 /tmp
+drwxrwxrwx   - hdfs hdfs       4096 2015-03-14 03:50 /user
+drwxrwxrwx   - hdfs hdfs       4096 2015-03-14 03:47 /var
+testuser@6c89346c4859:~$ hadoop fs -ls
+15/03/14 04:29:20 INFO nfs.NFSv3FileSystem: User config file: /etc/hadoop/conf/nfs-users.json
+15/03/14 04:29:20 INFO nfs.NFSv3FileSystem: Group config file: /etc/hadoop/conf/nfs-groups.json
+Store with ep Endpoint: host=nfs://10.128.218.44:2049/ export=/htop path=/ has fsId 2147484677
+testuser@6c89346c4859:~$
 ```
 
 <a name="try"></a>
