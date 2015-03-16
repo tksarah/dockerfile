@@ -86,8 +86,7 @@ testuser@6c89346c4859:~$
 
 Try TeraGen
 ```
-$ docker exec -it demo bash
-$ yarn jar /usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar teragen 10000 /hadoopvol1/data1MB
+testuser@6c89346c4859:~$ yarn jar /usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar teragen 10000 /hadoopvol1/data1MB
 Store with ep Endpoint: host=nfs://192.168.0.60:2049/ export=/htop path=/ has fsId 2147484677
 15/02/25 02:33:31 INFO nfs.NFSv3FileSystem: getAndVerifyHandle(): Parent path nfs://192.168.0.60:2049/hadoopvol01 could not be found
 15/02/25 02:33:31 INFO client.RMProxy: Connecting to ResourceManager at /0.0.0.0:8032
@@ -103,9 +102,9 @@ STREAMSTATS     name: class org.apache.hadoop.fs.nfs.stream.NFSBufferedInputStre
                 Bytes Read=0
         File Output Format Counters
                 Bytes Written=1000000
-$ 
+testuser@6c89346c4859:~$ 
 
-$ hadoop fs -ls -R /hadoopvol1/
+testuser@6c89346c4859:~$ hadoop fs -ls -R /hadoopvol1/
 Store with ep Endpoint: host=nfs://192.168.0.60:2049/ export=/htop path=/ has fsId 2147484677
 Store with ep Endpoint: host=nfs://192.168.0.60:2049/ export=null path=/hadoopvol1/ has fsId 2147484677
 drwxrwxrwx   - root root       4096 2015-02-25 03:07 /hadoopvol1/data1MB
