@@ -2,7 +2,8 @@
 #
 # VERSION               2.0.0 SNAPSHOT.
 
-FROM 10.128.218.41:5000/nfsconnector
+#FROM tksarah/cdh_nfs_connector
+FROM 10.128.218.41:5000/nfs-connector-demo
 MAINTAINER Takeshi.K <sarah@fm.secret.jp>
 
 # my_init Setting
