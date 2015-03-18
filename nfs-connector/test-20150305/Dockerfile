@@ -2,7 +2,7 @@
 #
 # VERSION               2.0.0 SNAPSHOT.
 
-FROM 10.128.218.41:5000/nfsconnetor:latest
+FROM 10.128.218.41:5000/nfsconnector
 MAINTAINER Takeshi.K <sarah@fm.secret.jp>
 
 # my_init Setting
