@@ -1,5 +1,4 @@
-# Demonstration for NFS Connector
+# My Dockerfiles
 
-Details : [NetApp Hadoop NFS Connector](https://github.com/NetApp/NetApp-Hadoop-NFS-Connector)
 
 
