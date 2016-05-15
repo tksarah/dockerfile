@@ -4,7 +4,7 @@
 
 #FROM tksarah/cdh_nfs_connector
 FROM 10.128.218.41:5000/nfs-connector-demo
-MAINTAINER Takeshi.K <sarah@fm.secret.jp>
+MAINTAINER Tk
 
 # my_init Setting
 COPY add_logf4.txt /tmp/
