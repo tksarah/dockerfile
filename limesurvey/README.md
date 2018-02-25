@@ -10,6 +10,13 @@
 docker build . -t hoge/limesurvey
 ```
 
+or
+
+```
+docker build --build-arg URL=<url of source file> . -t hoge/limesurvey
+```
+
+
 ## Run
 
 ```
