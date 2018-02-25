@@ -27,9 +27,10 @@ RUN mysql_install_db --user=mysql --ldata=/var/lib/mysql/
 
 # Download Limesurvey
 RUN mkdir -p /var/www
-RUN curl -L -o /tmp/limesurvey.tar.gz  http://www.d-ip.jp/download/images/limesurvey2.73.0+171219_ja_dip.tar.gz
+RUN curl -L -o /tmp/limesurvey.tar.gz  https://github.com/LimeSurvey/LimeSurvey/archive/3.4.1+180221.tar.gz
+#RUN curl -L -o /tmp/limesurvey.tar.gz  http://www.d-ip.jp/download/images/limesurvey2.73.0+171219_ja_dip.tar.gz
 RUN tar zxf /tmp/limesurvey.tar.gz -C /var/www &&  \
-    mv /var/www/limesurvey /var/www/survey && \
+    mv /var/www/* /var/www/survey && \
     chown -R nginx.nginx /var/www/survey
 
 # Set startup
