@@ -18,4 +18,4 @@ docker run -itd --name lime -p 80:80 hoge/limesurvey
 
 ## Access 
 
-Go to "yourwebserver/limesurvey/admin".
+Go to "http://yourwebserver/admin".
