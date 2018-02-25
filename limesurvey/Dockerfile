@@ -1,4 +1,4 @@
-# Lime Survey
+# Docker file for Lime Survey
 FROM centos:7
 MAINTAINER Tk
 

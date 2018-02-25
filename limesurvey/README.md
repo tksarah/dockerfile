@@ -1,4 +1,4 @@
-# Lime Survey
+# Dockerfile for Lime Survey
 * https://www.d-ip.jp/limesurvey/
 * http://donate.limesurvey.org/
 * https://www.limesurvey.org/forum
@@ -19,3 +19,9 @@ docker run -itd --name lime -p 80:80 hoge/limesurvey
 ## Access 
 
 Go to "http://yourwebserver/admin".
+
+
+## Spec
+
+* Image size : 1.26GB
+* Use memory : about 150MB 
